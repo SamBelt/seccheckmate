@@ -1,0 +1,280 @@
+category: Firmware Security
+description: Comprehensive firmware security assessment and vulnerability testing
+version: 1.0
+
+tests:
+  # Secure Boot and Code Integrity Tests
+  - id: FW-01
+    title: Secure Boot Enforcement
+    description: Verify secure boot is enabled and cannot be bypassed
+    severity: Critical
+    category: Boot Security
+
+  - id: FW-02
+    title: Firmware Update Signature Validation
+    description: Ensure firmware updates are cryptographically signed and verified
+    severity: Critical
+    category: Boot Security
+
+  - id: FW-03
+    title: Rollback Protection
+    description: Check if downgrade to older vulnerable firmware is prevented
+    severity: High
+    category: Boot Security
+
+  - id: FW-04
+    title: Code Signing Verification
+    description: Verify code sections are properly signed and integrity-checked
+    severity: High
+    category: Boot Security
+
+  - id: FW-05
+    title: Bootloader Protections
+    description: Verify bootloader is locked and cannot be modified
+    severity: Critical
+    category: Boot Security
+
+  # Credentials and Secrets Tests
+  - id: FW-06
+    title: Hardcoded Credentials
+    description: Search firmware binaries for embedded credentials or API keys
+    severity: Critical
+    category: Secrets Management
+
+  - id: FW-07
+    title: Private Keys in Firmware
+    description: Verify cryptographic private keys are not embedded in binary
+    severity: Critical
+    category: Secrets Management
+
+  - id: FW-08
+    title: Secrets Encryption
+    description: Verify secrets are encrypted at rest in firmware
+    severity: High
+    category: Secrets Management
+
+  - id: FW-09
+    title: Default Credentials Removal
+    description: Verify default credentials are removed from production firmware
+    severity: High
+    category: Secrets Management
+
+  # Debug Interfaces Tests
+  - id: FW-10
+    title: Debug Interfaces Disabled
+    description: Verify JTAG/UART/SWD are disabled or locked in production
+    severity: Critical
+    category: Debug Interfaces
+
+  - id: FW-11
+    title: Serial Console Access
+    description: Verify serial console requires authentication or is disabled
+    severity: High
+    category: Debug Interfaces
+
+  - id: FW-12
+    title: JTAG Protection
+    description: Verify JTAG is protected with authentication or fuses
+    severity: Critical
+    category: Debug Interfaces
+
+  - id: FW-13
+    title: SWD (Serial Wire Debug) Protection
+    description: Verify SWD is protected or disabled in production
+    severity: High
+    category: Debug Interfaces
+
+  # Services and Network Tests
+  - id: FW-14
+    title: Insecure Services
+    description: Identify unnecessary services like telnet, ftp, debug shells
+    severity: High
+    category: Services
+
+  - id: FW-15
+    title: SSH Configuration
+    description: Verify SSH uses strong algorithms and key sizes
+    severity: High
+    category: Services
+
+  - id: FW-16
+    title: Default Web Interface Credentials
+    description: Verify default credentials for web interfaces are changed
+    severity: High
+    category: Services
+
+  - id: FW-17
+    title: Unnecessary Open Ports
+    description: Verify only necessary ports are listening
+    severity: Medium
+    category: Services
+
+  # File System and Storage Tests
+  - id: FW-18
+    title: Sensitive File Exposure
+    description: Check for exposed config files, certificates, keys
+    severity: High
+    category: Storage
+
+  - id: FW-19
+    title: File System Permissions
+    description: Verify sensitive files have proper access restrictions
+    severity: Medium
+    category: Storage
+
+  - id: FW-20
+    title: Encrypted Storage Partitions
+    description: Verify sensitive data storage is encrypted
+    severity: High
+    category: Storage
+
+  - id: FW-21
+    title: Firmware Image Extraction
+    description: Test difficulty of extracting and analyzing firmware binary
+    severity: High
+    category: Storage
+
+  # Memory Protection Tests
+  - id: FW-22
+    title: ASLR Implementation
+    description: Verify Address Space Layout Randomization is enabled
+    severity: Medium
+    category: Memory Protection
+
+  - id: FW-23
+    title: Stack Canaries
+    description: Verify stack canaries/guards are implemented
+    severity: High
+    category: Memory Protection
+
+  - id: FW-24
+    title: DEP/NX Bit
+    description: Verify DEP (Data Execution Prevention) is enabled
+    severity: High
+    category: Memory Protection
+
+  - id: FW-25
+    title: Buffer Overflow Protections
+    description: Verify protections against buffer overflow attacks
+    severity: High
+    category: Memory Protection
+
+  # Cryptography Tests
+  - id: FW-26
+    title: Weak Cryptographic Algorithms
+    description: Verify strong algorithms (AES-256, SHA-256) are used
+    severity: High
+    category: Cryptography
+
+  - id: FW-27
+    title: Random Number Generation
+    description: Verify proper RNG implementation for security functions
+    severity: High
+    category: Cryptography
+
+  - id: FW-28
+    title: Certificate Pinning
+    description: Verify SSL/TLS certificates are pinned where applicable
+    severity: Medium
+    category: Cryptography
+
+  # Input Validation Tests
+  - id: FW-29
+    title: Command Injection Vulnerabilities
+    description: Test for command injection in CLI/web interfaces
+    severity: High
+    category: Input Validation
+
+  - id: FW-30
+    title: Buffer Overflow Vulnerabilities
+    description: Test input handling for buffer overflow vulnerabilities
+    severity: Critical
+    category: Input Validation
+
+  - id: FW-31
+    title: Format String Vulnerabilities
+    description: Test for format string vulnerabilities
+    severity: High
+    category: Input Validation
+
+  - id: FW-32
+    title: Integer Overflow/Underflow
+    description: Test integer arithmetic operations for overflows
+    severity: Medium
+    category: Input Validation
+
+  # Update Mechanism Tests
+  - id: FW-33
+    title: Secure Update Channel
+    description: Verify firmware updates use HTTPS with certificate validation
+    severity: High
+    category: Update Mechanism
+
+  - id: FW-34
+    title: Update Rollback Prevention
+    description: Verify versioning prevents rollback to vulnerable versions
+    severity: High
+    category: Update Mechanism
+
+  - id: FW-35
+    title: Differential Updates
+    description: Verify update mechanism validates full integrity
+    severity: Medium
+    category: Update Mechanism
+
+  # Reverse Engineering Protection Tests
+  - id: FW-36
+    title: Obfuscation Implementation
+    description: Verify firmware has anti-reverse engineering measures
+    severity: Medium
+    category: Reverse Engineering
+
+  - id: FW-37
+    title: String Encryption
+    description: Verify sensitive strings are encrypted in binary
+    severity: Low
+    category: Reverse Engineering
+
+  - id: FW-38
+    title: Symbol Stripping
+    description: Verify debug symbols are stripped from production binary
+    severity: Medium
+    category: Reverse Engineering
+
+  # Supply Chain Tests
+  - id: FW-39
+    title: Firmware Integrity Verification
+    description: Verify firmware images are signed by manufacturer
+    severity: Critical
+    category: Supply Chain
+
+  - id: FW-40
+    title: Build System Security
+    description: Verify build system and development environment security
+    severity: High
+    category: Supply Chain
+
+  - id: FW-41
+    title: Dependency Vulnerabilities
+    description: Scan firmware dependencies for known vulnerabilities
+    severity: High
+    category: Supply Chain
+
+  # Miscellaneous Tests
+  - id: FW-42
+    title: Logging and Monitoring
+    description: Verify proper logging of security-relevant events
+    severity: Medium
+    category: Miscellaneous
+
+  - id: FW-43
+    title: System Resource Limits
+    description: Verify limits on CPU, memory, and storage usage
+    severity: Medium
+    category: Miscellaneous
+
+  - id: FW-44
+    title: Error Handling
+    description: Verify proper error handling without information disclosure
+    severity: Medium
+    category: Miscellaneous

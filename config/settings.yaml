@@ -1,0 +1,44 @@
+tool:
+  name: SecCheckmate
+  version: 1.0
+  author: Security Team
+  description: Professional Security Assessment Tool
+
+organization:
+  name: "Your Organization"
+  project: "Security Assessment"
+
+report:
+  format: markdown
+  include_timestamp: true
+  include_severity: true
+  include_statistics: true
+  output_directory: "./reports"
+
+assessment:
+  allowed_status:
+    - PASS
+    - FAIL
+    - NA
+  
+  severity_levels:
+    - Critical
+    - High
+    - Medium
+    - Low
+    - Info
+
+checklist:
+  directory: "./checklists"
+  default_extension: ".yaml"
+  auto_discover: true
+
+ui:
+  show_emoji: true
+  show_descriptions: true
+  colors_enabled: true
+
+privacy:
+  log_user_data: false
+  encrypt_reports: false
+  auto_cleanup_days: 0

@@ -1,0 +1,243 @@
+category: WiFi Network Security
+description: Comprehensive WiFi security assessment and penetration testing checklist
+version: 1.0
+
+tests:
+  # Network Discovery Tests
+  - id: WIFI-01
+    title: SSID Broadcasting
+    description: Check if SSID is broadcasting or hidden
+    severity: Low
+    category: Reconnaissance
+
+  - id: WIFI-02
+    title: Rogue AP Detection
+    description: Scan for rogue access points impersonating legitimate networks
+    severity: High
+    category: Reconnaissance
+
+  - id: WIFI-03
+    title: Spectrum Analysis
+    description: Analyze spectrum for interference and neighboring networks
+    severity: Low
+    category: Reconnaissance
+
+  # Authentication Tests
+  - id: WIFI-04
+    title: Encryption Protocol
+    description: Verify WPA3 or WPA2 is used (WEP/WPA1 are deprecated)
+    severity: Critical
+    category: Authentication
+
+  - id: WIFI-05
+    title: Pre-Shared Key Strength
+    description: Verify WiFi password is 16+ characters with mixed complexity
+    severity: High
+    category: Authentication
+
+  - id: WIFI-06
+    title: PSK Dictionary Attack
+    description: Test WiFi password for common/weak passwords
+    severity: High
+    category: Authentication
+
+  - id: WIFI-07
+    title: WPA Enterprise Authentication
+    description: Verify WPA Enterprise uses strong certificate validation
+    severity: High
+    category: Authentication
+
+  - id: WIFI-08
+    title: Captive Portal
+    description: Test captive portal for security bypasses
+    severity: Medium
+    category: Authentication
+
+  # Encryption Tests
+  - id: WIFI-09
+    title: WPA Handshake Capture
+    description: Test if WPA handshake can be captured and cracked offline
+    severity: High
+    category: Encryption
+
+  - id: WIFI-10
+    title: TKIP Vulnerabilities
+    description: Verify TKIP is not used (deprecated and vulnerable)
+    severity: High
+    category: Encryption
+
+  - id: WIFI-11
+    title: Cipher Suite Analysis
+    description: Verify only strong ciphers are used (AES-256, AES-128)
+    severity: High
+    category: Encryption
+
+  - id: WIFI-12
+    title: Per-Frame Key Rotation
+    description: Verify proper key rotation mechanisms are in place
+    severity: Medium
+    category: Encryption
+
+  # Configuration Tests
+  - id: WIFI-13
+    title: Default Credentials
+    description: Check router admin credentials are changed from defaults
+    severity: Critical
+    category: Configuration
+
+  - id: WIFI-14
+    title: Router Admin Interface
+    description: Verify admin interface is not accessible from WiFi network
+    severity: Critical
+    category: Configuration
+
+  - id: WIFI-15
+    title: Router Firmware Version
+    description: Verify router firmware is up-to-date with latest patches
+    severity: High
+    category: Configuration
+
+  - id: WIFI-16
+    title: UPnP Enabled
+    description: Verify UPnP is disabled to prevent remote port mapping
+    severity: High
+    category: Configuration
+
+  - id: WIFI-17
+    title: WPS Enabled
+    description: Verify WPS (WiFi Protected Setup) is disabled
+    severity: High
+    category: Configuration
+
+  - id: WIFI-18
+    title: Remote Management
+    description: Verify remote management features are disabled
+    severity: High
+    category: Configuration
+
+  # Network Segmentation Tests
+  - id: WIFI-19
+    title: Guest Network
+    description: Verify guest network is properly isolated from main network
+    severity: High
+    category: Network Segmentation
+
+  - id: WIFI-20
+    title: VLAN Isolation
+    description: Verify VLANs are used for network segmentation
+    severity: Medium
+    category: Network Segmentation
+
+  - id: WIFI-21
+    title: Access Point Isolation
+    description: Verify client isolation is enabled to prevent peer-to-peer communication
+    severity: Medium
+    category: Network Segmentation
+
+  # Traffic Analysis Tests
+  - id: WIFI-22
+    title: Packet Capture
+    description: Test ability to capture and analyze WiFi traffic
+    severity: High
+    category: Traffic Analysis
+
+  - id: WIFI-23
+    title: MITM Attack - ARP Spoofing
+    description: Test network for ARP spoofing vulnerabilities
+    severity: High
+    category: Traffic Analysis
+
+  - id: WIFI-24
+    title: MITM Attack - DNS Spoofing
+    description: Test for DNS hijacking or spoofing possibilities
+    severity: High
+    category: Traffic Analysis
+
+  - id: WIFI-25
+    title: SSL/TLS Downgrade
+    description: Test if connections can be downgraded to unencrypted
+    severity: High
+    category: Traffic Analysis
+
+  # Denial of Service Tests
+  - id: WIFI-26
+    title: Deauthentication Attacks
+    description: Test network resilience to deauthentication frame floods
+    severity: High
+    category: DoS
+
+  - id: WIFI-27
+    title: Beacon Flooding
+    description: Test network for beacon frame flooding attacks
+    severity: Medium
+    category: DoS
+
+  - id: WIFI-28
+    title: Channel Jamming
+    description: Verify network continues functioning despite channel interference
+    severity: Medium
+    category: DoS
+
+  # Advanced Attacks Tests
+  - id: WIFI-29
+    title: Krack Attack Vulnerability
+    description: Test if WPA2 implementation is vulnerable to KRACK attacks
+    severity: High
+    category: Advanced Attacks
+
+  - id: WIFI-30
+    title: Evil Twin Detection
+    description: Verify legitimate network can be distinguished from clones
+    severity: High
+    category: Advanced Attacks
+
+  - id: WIFI-31
+    title: MAC Filtering Bypass
+    description: Test if MAC filtering can be bypassed via spoofing
+    severity: Medium
+    category: Advanced Attacks
+
+  # Client Security Tests
+  - id: WIFI-32
+    title: Client Security Awareness
+    description: Check users are aware of WiFi security best practices
+    severity: Medium
+    category: Client Security
+
+  - id: WIFI-33
+    title: Auto-Connect Vulnerability
+    description: Test if clients auto-connect to open networks
+    severity: Medium
+    category: Client Security
+
+  # Physical Security Tests
+  - id: WIFI-34
+    title: AP Physical Security
+    description: Verify access points are physically secured and monitored
+    severity: Medium
+    category: Physical Security
+
+  - id: WIFI-35
+    title: AP Access Logs
+    description: Verify access logs are monitored for suspicious activity
+    severity: Medium
+    category: Physical Security
+
+  # Logging and Monitoring Tests
+  - id: WIFI-36
+    title: Connection Logging
+    description: Verify failed connection attempts are logged
+    severity: Medium
+    category: Monitoring
+
+  - id: WIFI-37
+    title: Alert Mechanisms
+    description: Verify alerts are configured for suspicious activity
+    severity: Medium
+    category: Monitoring
+
+  - id: WIFI-38
+    title: Log Retention
+    description: Verify logs are retained for appropriate time period
+    severity: Medium
+    category: Monitoring

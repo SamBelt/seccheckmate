@@ -1,0 +1,247 @@
+category: Web Application Security
+description: Comprehensive checklist for web application penetration testing
+version: 1.0
+
+tests:
+  # Authentication Tests
+  - id: WEB-01
+    title: Password Strength Requirements
+    description: Verify password complexity requirements (min 8 chars, mixed case, numbers, symbols)
+    severity: High
+    category: Authentication
+
+  - id: WEB-02
+    title: Account Lockout Policy
+    description: Verify failed login attempts trigger account lockout after N attempts
+    severity: High
+    category: Authentication
+
+  - id: WEB-03
+    title: Session Management
+    description: Check session timeout, secure cookie flags (HttpOnly, Secure, SameSite)
+    severity: High
+    category: Authentication
+
+  - id: WEB-04
+    title: Multi-Factor Authentication
+    description: Verify MFA implementation for sensitive operations
+    severity: High
+    category: Authentication
+
+  - id: WEB-05
+    title: Password Reset Process
+    description: Test password reset for token expiration, uniqueness, and secure delivery
+    severity: High
+    category: Authentication
+
+  # Authorization Tests
+  - id: WEB-06
+    title: Access Control Implementation
+    description: Verify role-based access control (RBAC) is properly enforced
+    severity: High
+    category: Authorization
+
+  - id: WEB-07
+    title: Privilege Escalation
+    description: Test for horizontal and vertical privilege escalation vulnerabilities
+    severity: Critical
+    category: Authorization
+
+  - id: WEB-08
+    title: Direct Object References
+    description: Check for Insecure Direct Object References (IDOR) vulnerabilities
+    severity: High
+    category: Authorization
+
+  # Input Validation Tests
+  - id: WEB-09
+    title: SQL Injection
+    description: Test all input fields for SQL injection vulnerabilities
+    severity: Critical
+    category: Input Validation
+
+  - id: WEB-10
+    title: Cross-Site Scripting (XSS)
+    description: Test for stored, reflected, and DOM-based XSS vulnerabilities
+    severity: Critical
+    category: Input Validation
+
+  - id: WEB-11
+    title: Command Injection
+    description: Test for OS command injection in user-controllable parameters
+    severity: Critical
+    category: Input Validation
+
+  - id: WEB-12
+    title: XML External Entity (XXE)
+    description: Test XML parsers for XXE and XML bomb vulnerabilities
+    severity: High
+    category: Input Validation
+
+  - id: WEB-13
+    title: Path Traversal
+    description: Test file upload and download functionality for path traversal
+    severity: High
+    category: Input Validation
+
+  # CSRF and Related Tests
+  - id: WEB-14
+    title: CSRF Protection
+    description: Verify CSRF tokens are present, unique, and properly validated
+    severity: High
+    category: CSRF
+
+  - id: WEB-15
+    title: Cross-Origin Resource Sharing (CORS)
+    description: Check CORS headers for overly permissive configurations
+    severity: Medium
+    category: CSRF
+
+  # API Security Tests
+  - id: WEB-16
+    title: API Authentication
+    description: Verify API endpoints require proper authentication (API keys, JWT, OAuth)
+    severity: Critical
+    category: API Security
+
+  - id: WEB-17
+    title: API Rate Limiting
+    description: Test for rate limiting on API endpoints to prevent brute force attacks
+    severity: Medium
+    category: API Security
+
+  - id: WEB-18
+    title: API Input Validation
+    description: Verify API endpoints validate all input parameters
+    severity: High
+    category: API Security
+
+  - id: WEB-19
+    title: API Versioning
+    description: Check if deprecated API versions are still accessible
+    severity: Medium
+    category: API Security
+
+  # Sensitive Data Tests
+  - id: WEB-20
+    title: SSL/TLS Configuration
+    description: Verify HTTPS usage, valid certificates, and secure cipher suites
+    severity: Critical
+    category: Sensitive Data
+
+  - id: WEB-21
+    title: Sensitive Data in Logs
+    description: Check logs do not contain passwords, tokens, or PII
+    severity: High
+    category: Sensitive Data
+
+  - id: WEB-22
+    title: Sensitive Data in Transit
+    description: Verify all sensitive data is encrypted in transit
+    severity: Critical
+    category: Sensitive Data
+
+  - id: WEB-23
+    title: Sensitive Data at Rest
+    description: Verify sensitive data is encrypted at rest
+    severity: High
+    category: Sensitive Data
+
+  # File Upload Tests
+  - id: WEB-24
+    title: File Upload Validation
+    description: Test file upload for extension bypass, MIME type validation
+    severity: High
+    category: File Upload
+
+  - id: WEB-25
+    title: File Upload Size Limits
+    description: Verify file upload size limits are enforced
+    severity: Medium
+    category: File Upload
+
+  - id: WEB-26
+    title: Executable Upload Prevention
+    description: Test prevention of executable file uploads
+    severity: High
+    category: File Upload
+
+  # Error Handling Tests
+  - id: WEB-27
+    title: Error Message Information Disclosure
+    description: Check for verbose error messages revealing system information
+    severity: Medium
+    category: Error Handling
+
+  - id: WEB-28
+    title: Debug Mode Disabled
+    description: Verify debug mode is disabled in production
+    severity: Medium
+    category: Error Handling
+
+  # Security Headers Tests
+  - id: WEB-29
+    title: Security Headers
+    description: Verify presence of CSP, X-Frame-Options, X-Content-Type-Options headers
+    severity: High
+    category: Security Headers
+
+  - id: WEB-30
+    title: HTTP Security Headers
+    description: Check for Strict-Transport-Security and other security headers
+    severity: High
+    category: Security Headers
+
+  # Client-Side Security Tests
+  - id: WEB-31
+    title: JavaScript Security
+    description: Analyze JavaScript for security vulnerabilities and sensitive data exposure
+    severity: Medium
+    category: Client-Side Security
+
+  - id: WEB-32
+    title: Source Maps in Production
+    description: Verify source maps are not exposed in production
+    severity: Medium
+    category: Client-Side Security
+
+  # Business Logic Tests
+  - id: WEB-33
+    title: Business Logic Validation
+    description: Test business logic for inconsistencies and abuse scenarios
+    severity: High
+    category: Business Logic
+
+  - id: WEB-34
+    title: Race Conditions
+    description: Test for race conditions in critical operations
+    severity: High
+    category: Business Logic
+
+  # Miscellaneous Tests
+  - id: WEB-35
+    title: Dependency Vulnerabilities
+    description: Check dependencies for known vulnerabilities using tools like npm audit
+    severity: High
+    category: Dependencies
+    severity: Critical
+
+  - id: WEB-03
+    title: Input Validation
+    description: Test for SQLi, XSS, command injection
+    severity: High
+
+  - id: WEB-04
+    title: Security Headers
+    description: Verify CSP, HSTS, X-Frame-Options
+    severity: Medium
+
+  - id: WEB-05
+    title: Session Management
+    description: Check cookie flags and session expiry
+    severity: High
+
+  - id: WEB-06
+    title: File Upload Handling
+    description: Verify secure file upload restrictions
+    severity: High

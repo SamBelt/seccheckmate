@@ -1,0 +1,280 @@
+category: Large Language Model (LLM) Security
+description: Security assessment checklist for LLM applications and AI systems
+version: 1.0
+
+tests:
+  # Input Validation and Injection Tests
+  - id: LLM-01
+    title: Prompt Injection Vulnerability
+    description: Test LLM for prompt injection attacks and instruction override
+    severity: Critical
+    category: Input Validation
+
+  - id: LLM-02
+    title: Direct Prompt Injection
+    description: Test ability to override system prompts through user input
+    severity: Critical
+    category: Input Validation
+
+  - id: LLM-03
+    title: Indirect Prompt Injection
+    description: Test for injection through external data sources (documents, URLs)
+    severity: High
+    category: Input Validation
+
+  - id: LLM-04
+    title: Input Length Validation
+    description: Verify input is validated for length to prevent resource exhaustion
+    severity: Medium
+    category: Input Validation
+
+  - id: LLM-05
+    title: Encoding/Unicode Attacks
+    description: Test for bypass attempts using unicode, base64, or encoding tricks
+    severity: High
+    category: Input Validation
+
+  # Output Validation Tests
+  - id: LLM-06
+    title: Output Validation
+    description: Verify sensitive information is not leaked in model responses
+    severity: High
+    category: Output Validation
+
+  - id: LLM-07
+    title: Token Leakage
+    description: Test if API tokens or credentials can be extracted from responses
+    severity: Critical
+    category: Output Validation
+
+  - id: LLM-08
+    title: Training Data Leakage
+    description: Test if model reproduces verbatim training data (memorization)
+    severity: High
+    category: Output Validation
+
+  - id: LLM-09
+    title: PII Exposure
+    description: Verify personally identifiable information is not exposed
+    severity: Critical
+    category: Output Validation
+
+  # Model Behavior Tests
+  - id: LLM-10
+    title: Jailbreak Attempts
+    description: Test model for various jailbreak techniques and prompt patterns
+    severity: High
+    category: Model Behavior
+
+  - id: LLM-11
+    title: Role-Playing Exploitation
+    description: Test if role-playing prompts can bypass safety guidelines
+    severity: High
+    category: Model Behavior
+
+  - id: LLM-12
+    title: Multi-Turn Attacks
+    description: Test if safety measures weaken across multiple turns of conversation
+    severity: High
+    category: Model Behavior
+
+  - id: LLM-13
+    title: Adversarial Examples
+    description: Test model robustness against adversarial input patterns
+    severity: Medium
+    category: Model Behavior
+
+  # Knowledge Base and RAG Tests
+  - id: LLM-14
+    title: RAG Source Validation
+    description: Verify Retrieval Augmented Generation sources are validated and trusted
+    severity: High
+    category: Knowledge Base
+
+  - id: LLM-15
+    title: Knowledge Base Injection
+    description: Test if malicious documents can be injected into knowledge base
+    severity: High
+    category: Knowledge Base
+
+  - id: LLM-16
+    title: Source Attribution
+    description: Verify model properly attributes information sources
+    severity: Medium
+    category: Knowledge Base
+
+  - id: LLM-17
+    title: Data Freshness
+    description: Verify knowledge base is kept up-to-date and false information removed
+    severity: Medium
+    category: Knowledge Base
+
+  # API Security Tests
+  - id: LLM-18
+    title: API Authentication
+    description: Verify API requires authentication and authorization
+    severity: Critical
+    category: API Security
+
+  - id: LLM-19
+    title: API Rate Limiting
+    description: Verify rate limiting prevents abuse and resource exhaustion
+    severity: High
+    category: API Security
+
+  - id: LLM-20
+    title: API Token Security
+    description: Verify API keys/tokens are properly secured and rotated
+    severity: Critical
+    category: API Security
+
+  - id: LLM-21
+    title: API Input Validation
+    description: Verify API endpoint validates all parameters and payloads
+    severity: High
+    category: API Security
+
+  - id: LLM-22
+    title: API Output Filtering
+    description: Verify API filters sensitive information before response
+    severity: High
+    category: API Security
+
+  # Privacy and Data Protection Tests
+  - id: LLM-23
+    title: Data Retention Policy
+    description: Verify conversation logs are retained according to policy
+    severity: High
+    category: Privacy
+
+  - id: LLM-24
+    title: Data Encryption
+    description: Verify conversation data is encrypted in transit and at rest
+    severity: Critical
+    category: Privacy
+
+  - id: LLM-25
+    title: GDPR Compliance
+    description: Verify compliance with GDPR right to deletion and data portability
+    severity: High
+    category: Privacy
+
+  - id: LLM-26
+    title: User Data Segregation
+    description: Verify user data is properly isolated and not accessible to others
+    severity: Critical
+    category: Privacy
+
+  - id: LLM-27
+    title: Third-Party Data Sharing
+    description: Verify user data is not shared with third parties without consent
+    severity: High
+    category: Privacy
+
+  # Model Poisoning and Supply Chain Tests
+  - id: LLM-28
+    title: Model Source Verification
+    description: Verify model source is trusted and changes are tracked
+    severity: High
+    category: Supply Chain
+
+  - id: LLM-29
+    title: Dependency Vulnerabilities
+    description: Scan dependencies for known vulnerabilities
+    severity: High
+    category: Supply Chain
+
+  - id: LLM-30
+    title: Model Integrity
+    description: Verify model files have not been tampered with (checksums/signatures)
+    severity: High
+    category: Supply Chain
+
+  # Resource and Performance Tests
+  - id: LLM-31
+    title: DoS via Complex Queries
+    description: Test resilience to computationally expensive queries
+    severity: Medium
+    category: Performance
+
+  - id: LLM-32
+    title: Memory Exhaustion
+    description: Test prevention of memory exhaustion attacks
+    severity: High
+    category: Performance
+
+  - id: LLM-33
+    title: Output Length Limits
+    description: Verify responses are limited in length to prevent resource waste
+    severity: Medium
+    category: Performance
+
+  # Bias and Fairness Tests
+  - id: LLM-34
+    title: Discriminatory Output
+    description: Test model for biased or discriminatory responses
+    severity: High
+    category: Ethics
+
+  - id: LLM-35
+    title: Fairness Across Groups
+    description: Verify model treats different demographic groups fairly
+    severity: High
+    category: Ethics
+
+  - id: LLM-36
+    title: Harmful Content Generation
+    description: Test model prevention of hate speech and harmful content
+    severity: High
+    category: Ethics
+
+  # Monitoring and Logging Tests
+  - id: LLM-37
+    title: Usage Monitoring
+    description: Verify all API calls are logged with user, timestamp, and parameters
+    severity: High
+    category: Monitoring
+
+  - id: LLM-38
+    title: Anomaly Detection
+    description: Verify system detects unusual usage patterns
+    severity: Medium
+    category: Monitoring
+
+  - id: LLM-39
+    title: Audit Trails
+    description: Verify audit logs are immutable and cannot be tampered with
+    severity: High
+    category: Monitoring
+
+  # Fine-Tuning and Customization Tests
+  - id: LLM-40
+    title: Fine-Tuning Data Validation
+    description: Verify data used for fine-tuning is validated and sanitized
+    severity: High
+    category: Fine-Tuning
+
+  - id: LLM-41
+    title: Model Versioning
+    description: Verify fine-tuned models are versioned and tracked
+    severity: Medium
+    category: Fine-Tuning
+
+  # Integration and Deployment Tests
+  - id: LLM-42
+    title: Secrets Management
+    description: Verify API keys and secrets are not hardcoded or exposed
+    severity: Critical
+    category: Deployment
+
+  - id: LLM-43
+    title: Model Serving Environment
+    description: Verify model serving infrastructure is properly secured
+    severity: High
+    category: Deployment
+
+  - id: LLM-44
+    title: Fallback Mechanisms
+    description: Verify fallback mechanisms for when model fails
+    severity: Medium
+    category: Deployment

@@ -1,0 +1,254 @@
+category: AWS Cloud Security
+description: Comprehensive AWS security assessment checklist
+version: 1.0
+
+tests:
+  # IAM Security Tests
+  - id: AWS-01
+    title: Root Account Access
+    description: Verify root account is not used for daily operations and MFA is enabled
+    severity: Critical
+    category: IAM
+
+  - id: AWS-02
+    title: IAM User Management
+    description: Verify all users have MFA enabled and unused credentials are removed
+    severity: High
+    category: IAM
+
+  - id: AWS-03
+    title: IAM Policies - Least Privilege
+    description: Verify IAM policies follow principle of least privilege
+    severity: High
+    category: IAM
+
+  - id: AWS-04
+    title: IAM Roles and Trust Relationships
+    description: Review IAM role trust relationships for overly permissive policies
+    severity: High
+    category: IAM
+
+  - id: AWS-05
+    title: Access Keys Rotation
+    description: Verify access keys are rotated every 90 days
+    severity: High
+    category: IAM
+
+  - id: AWS-06
+    title: IAM Console Access
+    description: Verify IAM console access is restricted to specific IP ranges
+    severity: Medium
+    category: IAM
+
+  # EC2 Security Tests
+  - id: AWS-07
+    title: Security Groups Configuration
+    description: Verify security groups restrict traffic to necessary ports only
+    severity: High
+    category: EC2
+
+  - id: AWS-08
+    title: Network ACLs
+    description: Review Network ACLs for proper ingress/egress filtering
+    severity: High
+    category: EC2
+
+  - id: AWS-09
+    title: Unencrypted EBS Volumes
+    description: Verify all EBS volumes are encrypted by default
+    severity: High
+    category: EC2
+
+  - id: AWS-10
+    title: EC2 Instance Metadata Service
+    description: Verify IMDSv2 is enforced and IMDSv1 is disabled
+    severity: High
+    category: EC2
+
+  - id: AWS-11
+    title: Unused EC2 Instances
+    description: Identify and remove unused EC2 instances
+    severity: Medium
+    category: EC2
+
+  - id: AWS-12
+    title: EC2 Patch Management
+    description: Verify patch management process is in place
+    severity: High
+    category: EC2
+
+  # S3 Security Tests
+  - id: AWS-13
+    title: S3 Bucket Public Access
+    description: Verify S3 buckets are not publicly accessible
+    severity: Critical
+    category: S3
+
+  - id: AWS-14
+    title: S3 Encryption
+    description: Verify server-side encryption (SSE-S3 or SSE-KMS) is enabled
+    severity: High
+    category: S3
+
+  - id: AWS-15
+    title: S3 Versioning
+    description: Verify versioning is enabled for data protection
+    severity: Medium
+    category: S3
+
+  - id: AWS-16
+    title: S3 Access Logging
+    description: Verify S3 access logging is enabled for audit trails
+    severity: High
+    category: S3
+
+  - id: AWS-17
+    title: S3 Bucket Policies
+    description: Review S3 bucket policies for overly permissive access
+    severity: High
+    category: S3
+
+  - id: AWS-18
+    title: S3 Lifecycle Policies
+    description: Verify lifecycle policies are configured for log retention
+    severity: Medium
+    category: S3
+
+  - id: AWS-19
+    title: S3 MFA Delete
+    description: Verify MFA delete is enabled for critical buckets
+    severity: High
+    category: S3
+
+  # RDS Security Tests
+  - id: AWS-20
+    title: RDS Encryption
+    description: Verify RDS instances use encrypted storage and encrypted backups
+    severity: Critical
+    category: RDS
+
+  - id: AWS-21
+    title: RDS Public Accessibility
+    description: Verify RDS instances are not publicly accessible
+    severity: Critical
+    category: RDS
+
+  - id: AWS-22
+    title: RDS Backup Configuration
+    description: Verify automated backups are enabled with appropriate retention
+    severity: High
+    category: RDS
+
+  - id: AWS-23
+    title: RDS Multi-AZ Deployment
+    description: Verify Multi-AZ is enabled for production databases
+    severity: High
+    category: RDS
+
+  - id: AWS-24
+    title: RDS Credentials Management
+    description: Verify database credentials are managed via AWS Secrets Manager
+    severity: High
+    category: RDS
+
+  # CloudTrail and Monitoring Tests
+  - id: AWS-25
+    title: CloudTrail Logging
+    description: Verify CloudTrail is enabled for all regions
+    severity: Critical
+    category: Monitoring
+
+  - id: AWS-26
+    title: CloudTrail Log Integrity
+    description: Verify log file validation is enabled for CloudTrail
+    severity: High
+    category: Monitoring
+
+  - id: AWS-27
+    title: CloudWatch Monitoring
+    description: Verify CloudWatch alarms are configured for critical events
+    severity: High
+    category: Monitoring
+
+  - id: AWS-28
+    title: Log Aggregation
+    description: Verify logs are centralized and cannot be easily deleted
+    severity: High
+    category: Monitoring
+
+  # VPC Security Tests
+  - id: AWS-29
+    title: VPC Flow Logs
+    description: Verify VPC Flow Logs are enabled for network monitoring
+    severity: High
+    category: VPC
+
+  - id: AWS-30
+    title: VPC Endpoint Usage
+    description: Verify private connectivity is used where available
+    severity: Medium
+    category: VPC
+
+  - id: AWS-31
+    title: Subnet Configuration
+    description: Verify proper subnet segregation and routing
+    severity: High
+    category: VPC
+
+  # KMS Security Tests
+  - id: AWS-32
+    title: Key Management
+    description: Verify KMS key policies restrict key usage appropriately
+    severity: High
+    category: KMS
+
+  - id: AWS-33
+    title: Key Rotation
+    description: Verify automatic key rotation is enabled for KMS keys
+    severity: High
+    category: KMS
+
+  # Lambda Security Tests
+  - id: AWS-34
+    title: Lambda Execution Role
+    description: Verify Lambda functions use restrictive execution roles
+    severity: High
+    category: Lambda
+
+  - id: AWS-35
+    title: Lambda Environment Variables
+    description: Verify sensitive data in Lambda environment is encrypted
+    severity: High
+    category: Lambda
+
+  - id: AWS-36
+    title: Lambda VPC Configuration
+    description: Verify Lambda functions run in VPC where applicable
+    severity: Medium
+    category: Lambda
+
+  # DynamoDB Security Tests
+  - id: AWS-37
+    title: DynamoDB Encryption
+    description: Verify DynamoDB tables use encryption at rest
+    severity: High
+    category: DynamoDB
+
+  - id: AWS-38
+    title: DynamoDB Point-in-Time Recovery
+    description: Verify point-in-time recovery is enabled
+    severity: High
+    category: DynamoDB
+
+  # Miscellaneous Tests
+  - id: AWS-39
+    title: AWS Config
+    description: Verify AWS Config is enabled to track configuration changes
+    severity: High
+    category: Miscellaneous
+
+  - id: AWS-40
+    title: AWS Systems Manager Session Manager
+    description: Verify EC2 access uses Systems Manager instead of SSH keys
+    severity: High
+    category: Miscellaneous
