@@ -88,23 +88,31 @@ class SecCheckmate:
         self._print_header(f"Assessment: {checklist.get('category', 'Unknown')}")
         print(f"Total Tests: {total}\n")
 
-        for idx, test in enumerate(tests, 1):
-            self._display_test(test, idx, total)
-            status, notes = self._get_test_input(mode)
-            
-            results.append({
-                "id": test["id"],
-                "title": test["title"],
-                "description": test.get("description", ""),
-                "severity": test["severity"],
-                "status": status,
-                "notes": notes,
-                "category": test.get("category", "General")
-            })
-            
-            # Show progress
-            if idx % 10 == 0:
-                self._show_progress(idx, total)
+        try:
+            for idx, test in enumerate(tests, 1):
+                self._display_test(test, idx, total)
+                status, notes = self._get_test_input(mode)
+                
+                results.append({
+                    "id": test["id"],
+                    "title": test["title"],
+                    "description": test.get("description", ""),
+                    "severity": test["severity"],
+                    "status": status,
+                    "notes": notes,
+                    "category": test.get("category", "General")
+                })
+                
+                # Show progress
+                if idx % 10 == 0:
+                    self._show_progress(idx, total)
+        
+        except KeyboardInterrupt:
+            # User interrupted - save partial results
+            print("\n\n⚠️  Assessment interrupted by user!")
+            print(f"✅ Completed: {len(results)}/{total} tests")
+            print("📋 Generating report with completed tests...\n")
+            # Results will be saved even though incomplete
 
         self.current_results = results
         self.current_checklist = checklist
@@ -145,31 +153,39 @@ class SecCheckmate:
     def _get_test_input(self, mode: str = "interactive") -> Tuple[str, str]:
         """Get user input for test result with improved UX."""
         valid_statuses = {
+            'p': 'PASS',
             'y': 'PASS',
             'yes': 'PASS',
+            'pass': 'PASS',
+            'f': 'FAIL',
             'n': 'FAIL',
             'no': 'FAIL',
+            'fail': 'FAIL',
             'na': 'NA',
-            'n/a': 'NA'
+            'n/a': 'NA',
+            'not applicable': 'NA',
+            '': 'NA'  # Empty input = N/A (makes it faster!)
         }
 
         while True:
-            if mode == "interactive":
-                prompt = "    Status [y/yes=PASS, n/no=FAIL, na=N/A]: "
-            else:
-                prompt = "    Status [y/n/na]: "
-            
-            user_input = input(prompt).lower().strip()
-            
-            if user_input in valid_statuses:
-                status = valid_statuses[user_input]
-                break
-            elif user_input in ['pass', 'fail']:
-                status = user_input.upper()
-                break
-            else:
-                print("    ❌ Invalid input. Use: y/yes, n/no, or na")
-                continue
+            try:
+                if mode == "interactive":
+                    prompt = "    Status [p/y=PASS, f/n=FAIL, na=N/A, ENTER=N/A, or Ctrl+C]: "
+                else:
+                    prompt = "    Status [p/f/na/ENTER]: "
+                
+                user_input = input(prompt).lower().strip()
+                
+                if user_input in valid_statuses:
+                    status = valid_statuses[user_input]
+                    break
+                else:
+                    print("    ❌ Invalid input. Use: p (PASS), f (FAIL), na (N/A), or just press ENTER for N/A")
+                    continue
+                
+            except KeyboardInterrupt:
+                # User interrupted - raise to be caught by run_checklist
+                raise KeyboardInterrupt("User interrupted assessment")
 
         # Get evidence notes
         if mode == "interactive":
